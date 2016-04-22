@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <stdlib.h>
+#include <ctype.h>
 #include "PokemonEntris.h"
 
 using namespace std;
