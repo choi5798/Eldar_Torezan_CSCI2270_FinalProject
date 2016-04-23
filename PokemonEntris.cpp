@@ -21,9 +21,9 @@ void PokemonEntris :: createPokedex(string txtName)
 {
     string Aux;
     int i = 0;
-    ifstream InFile ( "PokedexEntris");
+    ifstream InFile ("PokedexEntris.txt");
     if ( !InFile.good() )
-        cout<<"There Are no Pokemon Entries\n";
+        cout<<"There Are No Pokemon Entries\n";
     else
     {
         for(i=0 ; !InFile.eof(); i++)
@@ -451,13 +451,13 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
     do
     {
         system("clear");
-        cout << "===============Pokedex===============" << endl << "| Kanto's Regional Pokedex          |" << endl << "| Trainer: " << trainerName;
+        cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
         for (int i = 0; i< leng-1; i++)
             cout << " ";
-        cout << "|" << endl << "|                                   |"<< endl<<
-             "| Please Select The Desired Option: |" << endl << "| 1. Search Pokemon by Height       |"
-             << endl << "| 2. Search Pokemon by Weight       |" << endl << "| 3. Search Pokemon by Name/Number  |" << endl <<
-             "| 4. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
+        cout << "|" << endl << "                                    |"<< endl<<
+             "- Please Select The Search Method:  |" << endl << "- 1. Search Pokemon by Height       |"
+             << endl << "- 2. Search Pokemon by Weight       |" << endl << "- 3. Search Pokemon by Name/Number  |" << endl <<
+             "- 4. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
 
         cin >> menuStatus;
         switch (menuStatus)
@@ -486,43 +486,100 @@ void PokemonEntris :: SearchByHeight()
     string LorH;
     string Type;
     PokemonInfo *Actual;
-    cout << "Please, Insert H for the Pokemon with the Highest Height value\n or Insert L for the Pokemon with the Lowest Height value\n";
-    cin >> LorH;
-    cout << "Please Insert What type of Pokemon you Want to Search From\n";
-    cin >> Type;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the tallest (H) or shortest (L) Pokemon?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
     PokemonInfo *temp;
-    if (Type == "Fire")
-        temp = Fire;
-    else if (Type == "Grass")
-        temp = Grass;
-    else if (Type == "Water")
-        temp = Water;
-    else if (Type == "Dragon")
-        temp = Dragon;
-    else if (Type == "Rock")
-        temp = Rock;
-    else if (Type == "Ground")
-        temp = Ground;
-    else if (Type == "Electric")
-        temp = Electric;
-    else if (Type == "Poison")
-        temp = Poison;
-    else if (Type == "Ice")
-        temp = Ice;
-    else if (Type == "Normal")
-        temp = Normal;
-    else if (Type == "Flying")
-        temp = Flying;
-    else if (Type == "Bug")
-        temp = Bug;
-    else if (Type == "Psychic")
-        temp = Psychic;
-    else if (Type == "Fighting")
-        temp = Fighting;
-    else if (Type == "Ghost")
-        temp = Ghost;
-    else
-        cout << "Please insert a valid pokemon type";
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
     Actual = temp;
     //string aux = " ";
     //Type = aux.append(Type);
@@ -546,7 +603,7 @@ void PokemonEntris :: SearchByHeight()
             }
         }
         system("clear");
-        cout << " The Shortest " << Type << " type Pokemon is:\n";
+        cout << " The Shortest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
         if (Actual->PokedexNumber < 10)
@@ -556,7 +613,7 @@ void PokemonEntris :: SearchByHeight()
         else
             cout << Actual->PokedexNumber;
 
-        cout << "        Growth Rate: " << Actual->GrowthRate << endl;
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
 
         cout << " Type: " << Actual->type1 << "    ";
         if (Actual->type1 != Actual->type2)
@@ -570,7 +627,7 @@ void PokemonEntris :: SearchByHeight()
         else
             cout << endl;
 
-        cout << " Avrg Height: " << Actual->height << "m    " << "Avrg Weight: " << Actual->weight << "kg"<< endl;
+        cout << " Avg Height: " << Actual->height << "m    " << "Avg Weight: " << Actual->weight << "kg"<< endl;
 
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
@@ -594,7 +651,7 @@ void PokemonEntris :: SearchByHeight()
             }
         }
         system("clear");
-        cout << " The Tallest " << Type << " type Pokemon is:\n";
+        cout << " The Tallest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
         if (Actual->PokedexNumber < 10)
@@ -604,7 +661,7 @@ void PokemonEntris :: SearchByHeight()
         else
             cout << Actual->PokedexNumber;
 
-        cout << "        Growth Rate: " << Actual->GrowthRate << endl;
+        cout << "        Growth Rate:" << Actual->GrowthRate << endl;
 
         cout << " Type: " << Actual->type1 << "    ";
         if (Actual->type1 != Actual->type2)
@@ -618,7 +675,7 @@ void PokemonEntris :: SearchByHeight()
         else
             cout << endl;
 
-        cout << " Avrg Height: " << Actual->height << "m    " << "Avrg Weight: " << Actual->weight << "kg"<< endl;
+        cout << " Avg Height: " << Actual->height << "m    " << "Avg Weight: " << Actual->weight << "kg"<< endl;
 
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
@@ -632,43 +689,100 @@ void PokemonEntris :: SearchByWeight()
     string LorH;
     string Type;
     PokemonInfo *Actual;
-    cout << "Please, Insert H for the Pokemon with the Highest Weight value\n or Insert L for the Pokemon with the Lowest Weight value\n";
-    cin >> LorH;
-    cout << "Please Insert What type of Pokemon you Want to Search From\n";
-    cin >> Type;
+    bool weightStatus = false;
+    bool typeStatus = false;
+    while (weightStatus == false){
+       cout << "Would you like to search for the heaviest (H) or lightest (L) Pokemon?\n";
+        cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            weightStatus = true;
+    }
     PokemonInfo *temp;
-    if (Type == "Fire")
-        temp = Fire;
-    else if (Type == "Grass")
-        temp = Grass;
-    else if (Type == "Water")
-        temp = Water;
-    else if (Type == "Dragon")
-        temp = Dragon;
-    else if (Type == "Rock")
-        temp = Rock;
-    else if (Type == "Ground")
-        temp = Ground;
-    else if (Type == "Electric")
-        temp = Electric;
-    else if (Type == "Poison")
-        temp = Poison;
-    else if (Type == "Ice")
-        temp = Ice;
-    else if (Type == "Normal")
-        temp = Normal;
-    else if (Type == "Flying")
-        temp = Flying;
-    else if (Type == "Bug")
-        temp = Bug;
-    else if (Type == "Psychic")
-        temp = Psychic;
-    else if (Type == "Fighting")
-        temp = Fighting;
-    else if (Type == "Ghost")
-        temp = Ghost;
-    else
-        cout << "Please insert a valid pokemon type";
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
     Actual = temp;
     //string aux = " ";
     //Type = aux.append(Type);
@@ -692,7 +806,7 @@ void PokemonEntris :: SearchByWeight()
             }
         }
         system("clear");
-        cout << " The Lightest " << Type << " type Pokemon is:\n";
+        cout << " The Lightest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
         if (Actual->PokedexNumber < 10)
@@ -716,7 +830,7 @@ void PokemonEntris :: SearchByWeight()
         else
             cout << endl;
 
-        cout << " Avrg Height: " << Actual->height << "m    " << "Avrg Weight: " << Actual->weight << "kg"<< endl;
+        cout << " Avg Height: " << Actual->height << "m    " << "Avg Weight: " << Actual->weight << "kg"<< endl;
 
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
@@ -740,7 +854,7 @@ void PokemonEntris :: SearchByWeight()
             }
         }
         system("clear");
-        cout << " The Heaviest " << Type << " type Pokemon is:\n";
+        cout << " The Heaviest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
         if (Actual->PokedexNumber < 10)
@@ -764,7 +878,7 @@ void PokemonEntris :: SearchByWeight()
         else
             cout << endl;
 
-        cout << " Avrg Height: " << Actual->height << "m    " << "Avrg Weight: " << Actual->weight << "kg"<< endl;
+        cout << " Avg Height: " << Actual->height << "m    " << "Avg Weight: " << Actual->weight << "kg"<< endl;
 
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
@@ -779,7 +893,7 @@ void PokemonEntris::SearchByNNGeneral()
     string input;
     int inputN;
     PokemonInfo *Actual = NULL;
-    cout << "Please Insert Either The Name or The Number of The Pokemon\n";
+    cout << "Please enter the name or the ID of the Pokemon you would like to search for:\n";
     cin >> input;
     inpute = input.c_str();
     if(isdigit(inpute[0]))
@@ -787,7 +901,7 @@ void PokemonEntris::SearchByNNGeneral()
         inputN = atoi(inpute) - 1;
         while ( inputN > 150)
         {
-            cout << "Please, Enter a Valid number\n";
+            cout << "Please enter a valid Pokemon ID!\n";
             cin >> inputN;
             inputN = inputN - 1;
         }
@@ -806,7 +920,7 @@ void PokemonEntris::SearchByNNGeneral()
     }
     while (Actual == NULL)
     {
-        cout << "Please, Insert a Valid Pokemon Name\n";
+        cout << "Please enter a valid Pokemon name!\n";
         cin >> input;
         for (int i =0;i<151;i++)
         {
@@ -817,8 +931,6 @@ void PokemonEntris::SearchByNNGeneral()
             }
         }
     }
-
-
 
     system("clear");
     cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
@@ -844,7 +956,7 @@ void PokemonEntris::SearchByNNGeneral()
     else
         cout << endl;
 
-    cout << " Avrg Height: " << Actual->height << "m    " << "Avrg Weight: " << Actual->weight << "kg"<< endl;
+    cout << " Avg Height: " << Actual->height << "m    " << "Avg Weight: " << Actual->weight << "kg"<< endl;
 
     cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
     cout << Actual->DescriptionText << endl;
