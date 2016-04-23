@@ -16,19 +16,18 @@ int main()
     int leng;
     PokemonEntris Pokedex;
     Pokedex.createPokedex("PokedexEntris.txt");
-    cout << "Trainer, Please enter your name\n";
+    cout << "Trainer, Please enter your name:\n";
     getline(cin, trainerName);
     leng = 26-trainerName.length();
     do {
         system("clear");
-        cout << "===============Pokedex===============" << endl << "| Kanto's Regional Pokedex          |" << endl << "| Trainer: " << trainerName;
+        cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
         for (int i = 0; i< leng-1;i++)
             cout << " ";
-        cout << "|" << endl << "|                                   |"<< endl<<
-         "| Please Select The Desired Option: |" << endl << "| 1. Pokemon General Information    |"
-        << endl << "| 2. Pokemon Battle Information     |" << endl << "| 3. Random Curiosity               |" << endl <<
-        "| 4. Turn off Pokedex               |"<< endl << "====================================="<< endl;
-
+        cout << "|" << endl << "                                    |"<< endl<<
+         "- Please Select The Desired Option: |" << endl << "- 1. Pokemon General Information    |"
+        << endl << "- 2. Pokemon Battle Information     |" << endl << "- 3. Random Curiosity               |" << endl <<
+        "- 4. Turn off Pokedex               |"<< endl << "====================================="<< endl;
         cin >> menuStatus;
         switch (menuStatus){
             case 1:
@@ -41,7 +40,7 @@ int main()
 
                 break;
             case 4:
-
+                cout << "Goodbye!" << endl;
                 break;
         }
     }while (menuStatus != 4);
