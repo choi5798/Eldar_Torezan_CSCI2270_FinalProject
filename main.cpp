@@ -9,6 +9,16 @@
 
 using namespace std;
 
+void RandomFacts(string *factslist)
+{
+
+}
+
+void FactsList(string filename, string * factslist)
+{
+
+}
+
 int main()
 {
     string trainerName;
@@ -37,6 +47,7 @@ int main()
                 Pokedex.PokemonBattleInformationMenu(trainerName);
                 break;
             case 3:
+
                 break;
             case 4:
                 cout << "Goodbye!" << endl;
