@@ -35,44 +35,44 @@ struct PokemonInfo
 };
 class PokemonEntris
 {
-    public:
-        PokemonEntris();
-        virtual ~PokemonEntris();
-        void createPokedex(string txtName);
-        void PokemonGeneralInformationMenu(string trainerName);
-        void PokemonBattleInformationMenu(string trainerName);
-        void RandomCuriosity(string trainerName);
-        void Compare();
-        void Breedable();
-        void SearchHP();
-        void SearchATK();
-        void SearchDEF();
-        void SearchSpA();
-        void SearchSpD();
-        void SearchSPD();
-        void SearchByHeight();
-        void SearchByWeight();
-        void SearchByNNGeneral();
-        void SearchByNNBattle();
-        PokemonInfo *Grass;
-        PokemonInfo *Fire;
-        PokemonInfo *Water;
-        PokemonInfo *Dragon;
-        PokemonInfo *Rock;
-        PokemonInfo *Ground;
-        PokemonInfo *Electric;
-        PokemonInfo *Poison;
-        PokemonInfo *Ice;
-        PokemonInfo *Normal;
-        PokemonInfo *Flying;
-        PokemonInfo *Bug;
-        PokemonInfo *Psychic;
-        PokemonInfo *Fighting;
-        PokemonInfo *Ghost;
-        PokemonInfo pokedex[151];
+public:
+    PokemonEntris();
+    virtual ~PokemonEntris();
+    void createPokedex(string txtName);
+    void PokemonGeneralInformationMenu(string trainerName);
+    void PokemonBattleInformationMenu(string trainerName);
+    void RandomCuriosity(string trainerName);
+    void Compare();
+    void Breedable();
+    void SearchHP();
+    void SearchATK();
+    void SearchDEF();
+    void SearchSpA();
+    void SearchSpD();
+    void SearchSPD();
+    void SearchByHeight();
+    void SearchByWeight();
+    void SearchByNNGeneral();
+    void SearchByNNBattle();
+    PokemonInfo *Grass;
+    PokemonInfo *Fire;
+    PokemonInfo *Water;
+    PokemonInfo *Dragon;
+    PokemonInfo *Rock;
+    PokemonInfo *Ground;
+    PokemonInfo *Electric;
+    PokemonInfo *Poison;
+    PokemonInfo *Ice;
+    PokemonInfo *Normal;
+    PokemonInfo *Flying;
+    PokemonInfo *Bug;
+    PokemonInfo *Psychic;
+    PokemonInfo *Fighting;
+    PokemonInfo *Ghost;
+    PokemonInfo pokedex[151];
 
-    protected:
-    private:
+protected:
+private:
 
 };
 
