@@ -51,6 +51,7 @@ int main()
     string trainerName;
     string pokefacts[40];
     int menuStatus;
+    string menu;
     int leng;
     PokemonEntris Pokedex;
     FactsList(&pokefacts[0]);
@@ -58,34 +59,33 @@ int main()
     cout << "Trainer, Please enter your name:\n";
     getline(cin, trainerName);
     leng = 26-trainerName.length();
-    do
-    {
+    do {
         system("clear");
         cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
-        for (int i = 0; i< leng-1; i++)
+        for (int i = 0; i< leng-1;i++)
             cout << " ";
         cout << "|" << endl << "                                    |"<< endl<<
-             "- Please Select The Desired Option: |" << endl << "- 1. Pokemon General Information    |"
-             << endl << "- 2. Pokemon Battle Information     |" << endl << "- 3. Random Curiosity               |" << endl <<
-             "- 4. Turn off Pokedex               |"<< endl << "====================================="<< endl;
-        cin >> menuStatus;
+         "- Please Select The Desired Option: |" << endl << "- 1. Pokemon General Information    |"
+        << endl << "- 2. Pokemon Battle Information     |" << endl << "- 3. Random Curiosity               |" << endl <<
+        "- 4. Turn off Pokedex               |"<< endl << "====================================="<< endl;
+        getline(cin, menu);
+        menuStatus = atoi(menu.c_str());
 
-        switch (menuStatus)
-        {
-        case 1:
-            Pokedex.PokemonGeneralInformationMenu(trainerName);
-            break;
-        case 2:
-            Pokedex.PokemonBattleInformationMenu(trainerName);
-            break;
-        case 3:
-            RandomFacts(&pokefacts[0]);
-            break;
-        case 4:
-            cout << "Goodbye!" << endl;
-            break;
+        switch (menuStatus){
+            case 1:
+                Pokedex.PokemonGeneralInformationMenu(trainerName);
+                break;
+            case 2:
+                Pokedex.PokemonBattleInformationMenu(trainerName);
+                break;
+            case 3:
+                RandomFacts(&pokefacts[0]);
+                break;
+            case 4:
+                system("clear");
+                cout << "Good Luck Adventurer!\nGotta catch 'em all!!" << endl;
+                break;
         }
-    }
-    while (menuStatus != 4);
+    }while (menuStatus != 4);
 
 }

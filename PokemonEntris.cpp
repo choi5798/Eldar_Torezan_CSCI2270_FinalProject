@@ -670,6 +670,7 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
 {
     int leng = 26-trainerName.length();
     int menuStatus;
+    string menu;
     do
     {
         system("clear");
@@ -681,8 +682,8 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
              << endl << "- 2. Search Pokemon by Weight       |" << endl << "- 3. Search Pokemon by Name/Number  |"
              << endl << "- 4. Check Breedability             |" << endl <<
              "- 5. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
-
-        cin >> menuStatus;
+        getline(cin, menu);
+        menuStatus = atoi(menu.c_str());
         switch (menuStatus)
         {
         case 1:
@@ -708,6 +709,7 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
 {
     int leng = 26-trainerName.length();
     int menuStatus;
+    string menu;
     do
     {
         system("clear");
@@ -720,7 +722,8 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
              << endl << "- 7. Search by Name/Number          |\n- 8. Compare Two Pokemon            |\n" <<
              "- 9. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
 
-        cin >> menuStatus;
+        getline(cin, menu);
+        menuStatus = atoi(menu.c_str());
         switch (menuStatus)
         {
         case 1:
