@@ -387,13 +387,13 @@ void PokemonEntris :: createPokedex(string txtName)
             pokedex[i].BaseHp = atoi(Aux.c_str());
 
             getline (InFile,Aux,',');
-            pokedex[i].BaseAtack = atoi(Aux.c_str());
+            pokedex[i].BaseAttack = atoi(Aux.c_str());
 
             getline (InFile,Aux,',');
             pokedex[i].BaseDef = atoi(Aux.c_str());
 
             getline (InFile,Aux,',');
-            pokedex[i].BaseSpAtack = atoi(Aux.c_str());
+            pokedex[i].BaseSpAttack = atoi(Aux.c_str());
 
             getline (InFile,Aux,',');
             pokedex[i].BaseSpDef = atoi(Aux.c_str());
@@ -473,12 +473,1332 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
             break;
         case 4:
             break;
-        case 5:
-            break;
         }
     }
     while (menuStatus != 4);
 }
+
+void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
+{
+    int leng = 26-trainerName.length();
+    int menuStatus;
+    do
+    {
+        system("clear");
+        cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
+        for (int i = 0; i< leng-1; i++)
+            cout << " ";
+        cout << "|" << endl << "                                    |"<< endl<<
+             "- Please Select The Search Method:  |" << endl << "- 1. Search by HP                   |\n- 2. Search by ATK                  |"
+             << endl << "- 3. Search by DEF                  |\n- 4. Search by SpA                  |" << endl << "- 5. Search by SpD                  |\n- 6. Search by SPD                  |" << endl <<
+             "- 7. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
+
+        cin >> menuStatus;
+        switch (menuStatus)
+        {
+        case 1:
+            SearchHP();
+            break;
+        case 2:
+            SearchATK();
+            break;
+        case 3:
+            SearchDEF();
+            break;
+        case 4:
+            SearchSpA();
+            break;
+        case 5:
+            SearchSpD();
+            break;
+        case 6:
+            SearchSPD();
+            break;
+        case 7:
+            break;
+        }
+    }
+    while (menuStatus != 7);
+}
+
+void PokemonEntris :: SearchHP()
+{
+    system("clear");
+    string LorH;
+    string Type;
+    PokemonInfo *Actual;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the Pokemon with Highest (H) or Lowest (L) HP Stat?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
+    PokemonInfo *temp;
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
+    Actual = temp;
+    //string aux = " ";
+    //Type = aux.append(Type);
+    Type = " "+Type;
+
+    if (LorH == "L")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseHp < Actual->BaseHp)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Lowest HP stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+
+    else if (LorH == "H")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseHp > Actual->BaseHp)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Highest Hp stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+    cin >> Type;
+}
+
+void PokemonEntris :: SearchATK()
+{
+    system("clear");
+    string LorH;
+    string Type;
+    PokemonInfo *Actual;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the Pokemon with Highest (H) or Lowest (L) ATK Stat?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
+    PokemonInfo *temp;
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
+    Actual = temp;
+    //string aux = " ";
+    //Type = aux.append(Type);
+    Type = " "+Type;
+
+    if (LorH == "L")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseAttack < Actual->BaseAttack)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Lowest ATK stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+
+    else if (LorH == "H")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseAttack > Actual->BaseAttack)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Highest ATK stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+    cin >> Type;
+}
+
+void PokemonEntris :: SearchDEF()
+{
+    system("clear");
+    string LorH;
+    string Type;
+    PokemonInfo *Actual;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the Pokemon with Highest (H) or Lowest (L) DEF Stat?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
+    PokemonInfo *temp;
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
+    Actual = temp;
+    //string aux = " ";
+    //Type = aux.append(Type);
+    Type = " "+Type;
+
+    if (LorH == "L")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseDef < Actual->BaseDef)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Lowest DEF stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+
+    else if (LorH == "H")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseDef > Actual->BaseDef)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Highest DEF stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+    cin >> Type;
+}
+
+void PokemonEntris :: SearchSpA()
+{
+    system("clear");
+    string LorH;
+    string Type;
+    PokemonInfo *Actual;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the Pokemon with Highest (H) or Lowest (L) SpA Stat?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
+    PokemonInfo *temp;
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
+    Actual = temp;
+    //string aux = " ";
+    //Type = aux.append(Type);
+    Type = " "+Type;
+
+    if (LorH == "L")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseSpAttack < Actual->BaseSpAttack)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Lowest SpA stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+
+    else if (LorH == "H")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseSpAttack > Actual->BaseSpAttack)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Highest SpA stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+    cin >> Type;
+}
+
+void PokemonEntris :: SearchSpD()
+{
+    system("clear");
+    string LorH;
+    string Type;
+    PokemonInfo *Actual;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the Pokemon with Highest (H) or Lowest (L) SpD Stat?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
+    PokemonInfo *temp;
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
+    Actual = temp;
+    //string aux = " ";
+    //Type = aux.append(Type);
+    Type = " "+Type;
+
+    if (LorH == "L")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseSpDef < Actual->BaseSpDef)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Lowest SpD stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+
+    else if (LorH == "H")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseSpDef > Actual->BaseSpDef)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Highest SpD stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+    cin >> Type;
+}
+
+void PokemonEntris :: SearchSPD()
+{
+    system("clear");
+    string LorH;
+    string Type;
+    PokemonInfo *Actual;
+    bool heightStatus = false;
+    bool typeStatus = false;
+    while (heightStatus == false){
+       cout << "Would you like to search for the Pokemon with Highest (H) or Lowest (L) SPD Stat?\n";
+       cin >> LorH;
+       if (LorH != "H" && LorH != "L"){
+            cout << "Please enter a valid option for searching!" << endl;
+       }
+       else
+            heightStatus = true;
+    }
+    PokemonInfo *temp;
+    while (typeStatus != true){
+        cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
+        cin >> Type;
+        if (Type == "Fire")
+            {
+            temp = Fire;
+            typeStatus = true;
+            }
+        else if (Type == "Grass")
+            {
+            temp = Grass;
+            typeStatus = true;
+            }
+        else if (Type == "Water")
+            {
+            temp = Water;
+            typeStatus = true;
+            }
+        else if (Type == "Dragon")
+            {
+            temp = Dragon;
+            typeStatus = true;
+            }
+        else if (Type == "Rock")
+            {
+            temp = Rock;
+            typeStatus = true;
+            }
+        else if (Type == "Ground")
+            {
+            temp = Ground;
+            typeStatus = true;
+            }
+        else if (Type == "Electric")
+            {
+            temp = Electric;
+            typeStatus = true;
+            }
+        else if (Type == "Poison")
+            {
+            temp = Poison;
+            typeStatus = true;
+            }
+        else if (Type == "Ice")
+            {
+            temp = Ice;
+            typeStatus = true;
+            }
+        else if (Type == "Normal")
+            {
+            temp = Normal;
+            typeStatus = true;
+            }
+        else if (Type == "Flying")
+            {
+            temp = Flying;
+            typeStatus = true;
+            }
+        else if (Type == "Bug")
+            {
+            temp = Bug;
+            typeStatus = true;
+            }
+        else if (Type == "Psychic")
+            {
+            temp = Psychic;
+            typeStatus = true;
+            }
+        else if (Type == "Fighting")
+            {
+            temp = Fighting;
+            typeStatus = true;
+            }
+        else if (Type == "Ghost")
+            {
+            temp = Ghost;
+            typeStatus = true;
+            }
+        else {
+            cout << "Please enter a valid Pokemon type!" << endl;
+        }
+    }
+    Actual = temp;
+    //string aux = " ";
+    //Type = aux.append(Type);
+    Type = " "+Type;
+
+    if (LorH == "L")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseSpeed < Actual->BaseSpeed)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Lowest SPD stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+
+    else if (LorH == "H")
+    {
+        while (temp != NULL)
+        {
+            if (temp->BaseSpeed > Actual->BaseSpeed)
+            {
+                Actual = temp;
+            }
+            if(Type == temp->type1)
+            {
+                temp = temp->next1;
+            }
+            else if(Type == temp->type2)
+            {
+                temp = temp->next2;
+            }
+        }
+        system("clear");
+        cout << " The " << Type << " type Pokemon with the Highest SPD stat is:\n";
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+    }
+    cin >> Type;
+}
+
 
 void PokemonEntris :: SearchByHeight()
 {

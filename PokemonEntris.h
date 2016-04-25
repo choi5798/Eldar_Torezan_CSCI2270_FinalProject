@@ -19,9 +19,9 @@ struct PokemonInfo
     float weight;
     string GrowthRate;
     int BaseHp;
-    int BaseAtack;
+    int BaseAttack;
     int BaseDef;
-    int BaseSpAtack;
+    int BaseSpAttack;
     int BaseSpDef;
     int BaseSpeed;
     int BaseTotal;
@@ -42,6 +42,12 @@ class PokemonEntris
         void PokemonGeneralInformationMenu(string trainerName);
         void PokemonBattleInformationMenu(string trainerName);
         void RandomCuriosity(string trainerName);
+        void SearchHP();
+        void SearchATK();
+        void SearchDEF();
+        void SearchSpA();
+        void SearchSpD();
+        void SearchSPD();
         void SearchByHeight();
         void SearchByWeight();
         void SearchByNNGeneral();

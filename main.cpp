@@ -34,10 +34,9 @@ int main()
                 Pokedex.PokemonGeneralInformationMenu(trainerName);
                 break;
             case 2:
-
+                Pokedex.PokemonBattleInformationMenu(trainerName);
                 break;
             case 3:
-
                 break;
             case 4:
                 cout << "Goodbye!" << endl;
