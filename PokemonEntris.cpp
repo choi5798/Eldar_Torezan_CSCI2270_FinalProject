@@ -446,6 +446,7 @@ void PokemonEntris :: createPokedex(string txtName)
 
 void PokemonEntris::Compare()
 {
+    system("clear");
     const char *inpute;
     string input;
     int inputN;
@@ -659,7 +660,10 @@ void PokemonEntris::Compare()
         cout << Actual2 -> Name << " has " << Actual2 -> BaseTotal << " base power." << endl;
         cout << Actual -> Name << " has the same amount of base power as " << Actual2 -> Name << "." << endl;
     }
-    cin >> input;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
@@ -960,7 +964,10 @@ void PokemonEntris :: SearchHP()
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
     }
-    cin >> Type;
+cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchATK()
@@ -1173,7 +1180,10 @@ void PokemonEntris :: SearchATK()
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
     }
-    cin >> Type;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchDEF()
@@ -1386,7 +1396,10 @@ void PokemonEntris :: SearchDEF()
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
     }
-    cin >> Type;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchSpA()
@@ -1599,7 +1612,10 @@ void PokemonEntris :: SearchSpA()
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
     }
-    cin >> Type;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchSpD()
@@ -1812,7 +1828,10 @@ void PokemonEntris :: SearchSpD()
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
     }
-    cin >> Type;
+            cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchSPD()
@@ -2025,7 +2044,10 @@ void PokemonEntris :: SearchSPD()
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
     }
-    cin >> Type;
+            cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris::Breedable()
@@ -2119,7 +2141,10 @@ void PokemonEntris::Breedable()
         }
     else
         cout << Actual -> Name << " cannot breed with " << Actual2 -> Name << "." << endl;
-    cin >> input;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchByHeight()
@@ -2322,7 +2347,10 @@ void PokemonEntris :: SearchByHeight()
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
     }
-    cin >> Type;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris :: SearchByWeight()
@@ -2525,12 +2553,16 @@ void PokemonEntris :: SearchByWeight()
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
     }
-    cin >> Type;
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 
 }
 
 void PokemonEntris::SearchByNNGeneral()
 {
+    system("clear");
     const char *inpute;
     string input;
     int inputN;
@@ -2602,11 +2634,15 @@ void PokemonEntris::SearchByNNGeneral()
 
     cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
     cout << Actual->DescriptionText << endl;
-    cin >> input;
+            cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
 
 void PokemonEntris ::SearchByNNBattle()
 {
+    system("clear");
     const char *inpute;
     string input;
     int inputN;
@@ -2682,5 +2718,9 @@ void PokemonEntris ::SearchByNNBattle()
         if (Actual->BaseSpDef <100)
             cout << " ";
         cout << "    SPD: " << Actual->BaseSpeed << endl;
-        cin >> input;
+
+        cin.get();
+        while (cin.get() != '\n')
+        {
+        }
 }
