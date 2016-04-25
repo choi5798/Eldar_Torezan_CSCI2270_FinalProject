@@ -92,4 +92,5 @@ Cloyster, 91, Water, Ice, Bivalve Pokemon, 150, 132500, Slow, 50, 95, 180, 85, 4
 Gastly, 92, Ghost, Poison, Gas Pokemon, 130, 100, Medium Slow, 30, 35, 30, 100, 35, 80, 310, Amorphous, Amorphous, 5000, 5000, Almost invisible, this gaseous POKéMON cloaks the target and puts it to sleep without notice.
 Haunter, 93, Ghost, Poison, Gas Pokemon, 160, 100, Medium Slow, 45, 50, 45, 115, 55, 95, 405, Amorphous, Amorphous, 5000, 5000, Because of its ability to slip through block walls, it is said to be from another dimension.
 Gengar, 94, Ghost, Poison, Shadow Pokemon, 150, 40500, Medium Slow, 60, 65, 60, 130, 75, 110, 550, Amorphous, Amorphous, 5000, 5000, Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright.
+Onix, 95, Rock, Ground, Rock Snake Pokemon, 879, 210000, Medium Fast, 35, 45, 160, 30, 45, 70, 385, Mineral, Mineral, 5000, 5000, As it grows, the stone portions of its body harden to become similar to a diamond, but colored black.
  
