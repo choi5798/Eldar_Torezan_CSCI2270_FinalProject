@@ -42,6 +42,8 @@ class PokemonEntris
         void PokemonGeneralInformationMenu(string trainerName);
         void PokemonBattleInformationMenu(string trainerName);
         void RandomCuriosity(string trainerName);
+        void Compare();
+        void Breedable();
         void SearchHP();
         void SearchATK();
         void SearchDEF();

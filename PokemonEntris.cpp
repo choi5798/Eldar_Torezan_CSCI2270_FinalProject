@@ -444,6 +444,224 @@ void PokemonEntris :: createPokedex(string txtName)
     }
 }
 
+void PokemonEntris::Compare()
+{
+    const char *inpute;
+    string input;
+    int inputN;
+    PokemonInfo *Actual = NULL;
+    cout << "Please enter the name or the ID of the first Pokemon you would like to compare:\n";
+    cin >> input;
+    inpute = input.c_str();
+    if(isdigit(inpute[0]))
+    {
+        inputN = atoi(inpute) - 1;
+        while ( inputN > 150)
+        {
+            cout << "Please enter a valid Pokemon ID!\n";
+            cin >> inputN;
+            inputN = inputN - 1;
+        }
+        Actual = &pokedex[inputN];
+    }
+    else
+    {
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual= &pokedex[i];
+                break;
+            }
+        }
+    }
+    while (Actual == NULL)
+    {
+        cout << "Please enter a valid Pokemon name!\n";
+        cin >> input;
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual= &pokedex[i];
+                break;
+            }
+        }
+    }
+    PokemonInfo *Actual2 = NULL;
+    cout << "Please enter the name or the ID of the second Pokemon you would like to compare:\n";
+    cin >> input;
+    inpute = input.c_str();
+    if(isdigit(inpute[0]))
+    {
+        inputN = atoi(inpute) - 1;
+        while ( inputN > 150)
+        {
+            cout << "Please enter a valid Pokemon ID!\n";
+            cin >> inputN;
+            inputN = inputN - 1;
+        }
+        Actual2 = &pokedex[inputN];
+    }
+    else
+    {
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual2= &pokedex[i];
+                break;
+            }
+        }
+    }
+    while (Actual2 == NULL)
+    {
+        cout << "Please enter a valid Pokemon name!\n";
+        cin >> input;
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual2= &pokedex[i];
+                break;
+            }
+        }
+    }
+    if (Actual -> BaseHp > Actual2 -> BaseHp)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseHp << " base HP." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseHp << " base HP." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseHp - Actual2 -> BaseHp << " more base HP than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseHp < Actual2 -> BaseHp)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseHp << " base HP." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseHp << " base HP." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseHp - Actual -> BaseHp << " less base HP than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseHp << " base HP." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseHp << " base HP." << endl;
+        cout << Actual -> Name << " has the same amount of base HP as " << Actual2 -> Name << "." << endl;
+    }
+    cout << endl;
+    if (Actual -> BaseAttack > Actual2 -> BaseAttack)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseAttack << " base attack damage." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseAttack << " base attack damage." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseAttack - Actual2 -> BaseAttack << " more base attack damage than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseAttack < Actual2 -> BaseAttack)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseAttack << " base attack damage." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseAttack << " base attack damage." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseAttack - Actual -> BaseAttack << " less base attack damage than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseAttack << " base attack damage." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseAttack << " base attack damage." << endl;
+        cout << Actual -> Name << " has the same amount of base attack damage as " << Actual2 -> Name << "." << endl;
+    }
+    cout << endl;
+    if (Actual -> BaseDef > Actual2 -> BaseDef)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseDef << " base defense." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseDef << " base defense." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseDef - Actual2 -> BaseDef << " more base defense than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseDef < Actual2 -> BaseDef)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseDef << " base defense." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseDef << " base defense." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseDef - Actual -> BaseDef << " less base defense than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseDef << " base defense." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseDef << " base defense." << endl;
+        cout << Actual -> Name << " has the same amount of base defense as " << Actual2 -> Name << "." << endl;
+    }
+    cout << endl;
+    if (Actual -> BaseSpAttack > Actual2 -> BaseSpAttack)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpAttack << " base special attack damage." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpAttack << " base special attack damage." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseSpAttack - Actual2 -> BaseSpAttack << " more base special attack damage than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseSpAttack < Actual2 -> BaseSpAttack)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpAttack << " base special attack damage." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpAttack << " base special attack damage." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseSpAttack - Actual -> BaseSpAttack << " less base special attack damage than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpAttack << " base special attack damage." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpAttack << " base special attack damage." << endl;
+        cout << Actual -> Name << " has the same amount of base special attack damage as " << Actual2 -> Name << "." << endl;
+    }
+    cout << endl;
+    if (Actual -> BaseSpDef > Actual2 -> BaseSpDef)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpDef << " base special defense." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpDef << " base special defense." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseSpDef - Actual2 -> BaseSpDef << " more base special defense than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseSpDef < Actual2 -> BaseSpDef)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpDef << " base special defense." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpDef << " base special defense." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseSpDef - Actual -> BaseSpDef << " less base special defense than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpDef << " base special defense." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpDef << " base special defense." << endl;
+        cout << Actual -> Name << " has the same amount of base special defense as " << Actual2 -> Name << "." << endl;
+    }
+    cout << endl;
+    if (Actual -> BaseSpeed > Actual2 -> BaseSpeed)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpeed << " base speed." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpeed << " base speed." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseSpeed - Actual2 -> BaseSpeed << " more base speed than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseSpeed < Actual2 -> BaseSpeed)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpeed << " base speed." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpeed << " base speed." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseSpeed - Actual -> BaseSpeed << " less base speed than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseSpeed << " base speed." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseSpeed << " base speed." << endl;
+        cout << Actual -> Name << " has the same amount of base speed as " << Actual2 -> Name << "." << endl;
+    }
+    cout << endl;
+    if (Actual -> BaseTotal > Actual2 -> BaseTotal)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseTotal << " base power." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseTotal << " base power." << endl;
+        cout << Actual -> Name << " has " << Actual -> BaseTotal - Actual2 -> BaseTotal << " more base power than " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> BaseTotal < Actual2 -> BaseTotal)
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseTotal << " base power." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseTotal << " base power." << endl;
+        cout << Actual -> Name << " has " << Actual2 -> BaseTotal - Actual -> BaseTotal << " less base power than " << Actual2 -> Name << "." << endl;
+    }
+    else
+    {
+        cout << Actual -> Name << " has " << Actual -> BaseTotal << " base power." << endl;
+        cout << Actual2 -> Name << " has " << Actual2 -> BaseTotal << " base power." << endl;
+        cout << Actual -> Name << " has the same amount of base power as " << Actual2 -> Name << "." << endl;
+    }
+    cin >> input;
+}
+
 void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
 {
     int leng = 26-trainerName.length();
@@ -456,8 +674,9 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
             cout << " ";
         cout << "|" << endl << "                                    |"<< endl<<
              "- Please Select The Search Method:  |" << endl << "- 1. Search Pokemon by Height       |"
-             << endl << "- 2. Search Pokemon by Weight       |" << endl << "- 3. Search Pokemon by Name/Number  |" << endl <<
-             "- 4. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
+             << endl << "- 2. Search Pokemon by Weight       |" << endl << "- 3. Search Pokemon by Name/Number  |"
+              << endl << "- 4. Check Breedability             |" << endl <<
+             "- 5. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
 
         cin >> menuStatus;
         switch (menuStatus)
@@ -472,10 +691,13 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
             SearchByNNGeneral();
             break;
         case 4:
+            Breedable();
+            break;
+        case 5:
             break;
         }
     }
-    while (menuStatus != 4);
+    while (menuStatus != 5);
 }
 
 void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
@@ -490,8 +712,9 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
             cout << " ";
         cout << "|" << endl << "                                    |"<< endl<<
              "- Please Select The Search Method:  |" << endl << "- 1. Search by HP                   |\n- 2. Search by ATK                  |"
-             << endl << "- 3. Search by DEF                  |\n- 4. Search by SpA                  |" << endl << "- 5. Search by SpD                  |\n- 6. Search by SPD                  |" << endl <<
-             "- 7. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
+             << endl << "- 3. Search by DEF                  |\n- 4. Search by SpA                  |" << endl << "- 5. Search by SpD                  |\n- 6. Search by SPD                  |"
+              << endl << "- 7. Search by Name/Number          |\n- 8. Compare Two Pokemon            |\n" <<
+             "- 9. Go Back to Previous Menu       |"<< endl << "====================================="<< endl;
 
         cin >> menuStatus;
         switch (menuStatus)
@@ -515,10 +738,16 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
             SearchSPD();
             break;
         case 7:
+            SearchByNNBattle();
+            break;
+        case 8:
+            Compare();
+            break;
+        case 9:
             break;
         }
     }
-    while (menuStatus != 7);
+    while (menuStatus != 9);
 }
 
 void PokemonEntris :: SearchHP()
@@ -1799,6 +2028,99 @@ void PokemonEntris :: SearchSPD()
     cin >> Type;
 }
 
+void PokemonEntris::Breedable()
+{
+    const char *inpute;
+    string input;
+    int inputN;
+    PokemonInfo *Actual = NULL;
+    cout << "Please enter the name or the ID of the first Pokemon you would like to verify for breed-ability:\n";
+    cin >> input;
+    inpute = input.c_str();
+    if(isdigit(inpute[0]))
+    {
+        inputN = atoi(inpute) - 1;
+        while ( inputN > 150)
+        {
+            cout << "Please enter a valid Pokemon ID!\n";
+            cin >> inputN;
+            inputN = inputN - 1;
+        }
+        Actual = &pokedex[inputN];
+    }
+    else
+    {
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual= &pokedex[i];
+                break;
+            }
+        }
+    }
+    while (Actual == NULL)
+    {
+        cout << "Please enter a valid Pokemon name!\n";
+        cin >> input;
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual= &pokedex[i];
+                break;
+            }
+        }
+    }
+    PokemonInfo *Actual2 = NULL;
+    cout << "Please enter the name or the ID of the second Pokemon you would like to verify for breed-ability:\n";
+    cin >> input;
+    inpute = input.c_str();
+    if(isdigit(inpute[0]))
+    {
+        inputN = atoi(inpute) - 1;
+        while ( inputN > 150)
+        {
+            cout << "Please enter a valid Pokemon ID!\n";
+            cin >> inputN;
+            inputN = inputN - 1;
+        }
+        Actual2 = &pokedex[inputN];
+    }
+    else
+    {
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual2= &pokedex[i];
+                break;
+            }
+        }
+    }
+    while (Actual2 == NULL)
+    {
+        cout << "Please enter a valid Pokemon name!\n";
+        cin >> input;
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual2= &pokedex[i];
+                break;
+            }
+        }
+    }
+    system("clear");
+    if(Actual -> eggGroup1 == Actual2 -> eggGroup1 || Actual -> eggGroup1 == Actual2 -> eggGroup2 ||
+       Actual -> eggGroup2 == Actual2 -> eggGroup1 || Actual -> eggGroup2 == Actual2 -> eggGroup2)
+        {
+            cout << Actual -> Name << " can breed with " << Actual2 -> Name << "." << endl;
+        }
+    else
+        cout << Actual -> Name << " cannot breed with " << Actual2 -> Name << "." << endl;
+    cin >> input;
+}
 
 void PokemonEntris :: SearchByHeight()
 {
@@ -2281,4 +2603,84 @@ void PokemonEntris::SearchByNNGeneral()
     cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
     cout << Actual->DescriptionText << endl;
     cin >> input;
+}
+
+void PokemonEntris ::SearchByNNBattle()
+{
+    const char *inpute;
+    string input;
+    int inputN;
+    PokemonInfo *Actual = NULL;
+    cout << "Please enter the name or the ID of the Pokemon you would like to search for:\n";
+    cin >> input;
+    inpute = input.c_str();
+    if(isdigit(inpute[0]))
+    {
+        inputN = atoi(inpute) - 1;
+        while ( inputN > 150)
+        {
+            cout << "Please enter a valid Pokemon ID!\n";
+            cin >> inputN;
+            inputN = inputN - 1;
+        }
+        Actual = &pokedex[inputN];
+    }
+    else
+    {
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual= &pokedex[i];
+                break;
+            }
+        }
+    }
+    while (Actual == NULL)
+    {
+        cout << "Please enter a valid Pokemon name!\n";
+        cin >> input;
+        for (int i =0;i<151;i++)
+        {
+            if(pokedex[i].Name == input)
+            {
+                Actual= &pokedex[i];
+                break;
+            }
+        }
+    }
+    system("clear");
+        cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
+        cout << " No: ";
+        if (Actual->PokedexNumber < 10)
+            cout << "00" << Actual->PokedexNumber;
+        else if (Actual->PokedexNumber < 100)
+            cout << "0" << Actual->PokedexNumber;
+        else
+            cout << Actual->PokedexNumber;
+
+        cout << "         Growth Rate:" << Actual->GrowthRate << endl;
+
+        cout << " Type: " << Actual->type1 << "    ";
+        if (Actual->type1 != Actual->type2)
+            cout << "and    " << Actual->type2 << endl;
+        else
+            cout << endl;
+
+        cout << "  HP: " << Actual->BaseHp;
+        if (Actual->BaseHp <100)
+            cout << " ";
+        cout << "    ATK: " << Actual->BaseAttack;
+        if (Actual->BaseAttack <100)
+            cout << " ";
+        cout << "    DEF: " << Actual->BaseDef<<endl;
+
+        cout << " SpA: " << Actual->BaseSpAttack ;
+        if (Actual->BaseSpAttack <100)
+            cout << " ";
+        cout << "    SpD: " << Actual->BaseSpDef ;
+        if (Actual->BaseSpDef <100)
+            cout << " ";
+        cout << "    SPD: " << Actual->BaseSpeed << endl;
+        cin >> input;
 }
