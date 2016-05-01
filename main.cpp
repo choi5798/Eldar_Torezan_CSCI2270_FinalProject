@@ -12,21 +12,15 @@ using namespace std;
 void RandomFacts(string *factslist)
 {
     system("clear");
-
-    int Rnumb = 0;
-    while (Rnumb > 40 || Rnumb < 1)
-    {
-
-        system("clear");
-        cout << "Please enter a random number from 1 to 40\n";
-        cin >> Rnumb;
-    }
-
-
+    int Rnumber;
     system("clear");
-    cout << factslist[Rnumb-1] << endl;
-
-    cin.get();
+    srand( time( NULL ) );
+    for (int i = 0; i < 3; i++)
+    {
+      Rnumber = (rand() % 40);
+    }
+    cout << factslist[Rnumber] << endl;
+    //cin.get();
     while (cin.get() != '\n')
     {
     }
@@ -66,7 +60,7 @@ int main()
             cout << " ";
         cout << "|" << endl << "                                    |"<< endl<<
          "- Please Select The Desired Option: |" << endl << "- 1. Pokemon General Information    |"
-        << endl << "- 2. Pokemon Battle Information     |" << endl << "- 3. Random Curiosity               |" << endl <<
+        << endl << "- 2. Pokemon Battle Information     |" << endl << "- 3. Pokemon Facts                  |" << endl <<
         "- 4. Turn off Pokedex               |"<< endl << "====================================="<< endl;
         getline(cin, menu);
         menuStatus = atoi(menu.c_str());
@@ -87,5 +81,5 @@ int main()
                 break;
         }
     }while (menuStatus != 4);
-
+    return 0;
 }

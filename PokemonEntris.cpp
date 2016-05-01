@@ -19,6 +19,7 @@ PokemonEntris::~PokemonEntris()
 
 void PokemonEntris :: createPokedex(string txtName)
 {
+    //Takes all the info of the Pokemon and puts them into an array and puts the Pokemon types into a linked list
     string Aux;
     int i = 0;
     ifstream InFile ("PokedexEntris.txt");
@@ -446,13 +447,14 @@ void PokemonEntris :: createPokedex(string txtName)
 
 void PokemonEntris::Compare()
 {
+    //Compares the battle stats of two Pokemon
     system("clear");
     const char *inpute;
     string input;
     int inputN;
     PokemonInfo *Actual = NULL;
     cout << "Please enter the name or the ID of the first Pokemon you would like to compare:\n";
-    cin >> input;
+    getline(cin, input);
     inpute = input.c_str();
     if(isdigit(inpute[0]))
     {
@@ -479,7 +481,7 @@ void PokemonEntris::Compare()
     while (Actual == NULL)
     {
         cout << "Please enter a valid Pokemon name!\n";
-        cin >> input;
+        getline(cin, input);
         for (int i =0; i<151; i++)
         {
             if(pokedex[i].Name == input)
@@ -491,7 +493,7 @@ void PokemonEntris::Compare()
     }
     PokemonInfo *Actual2 = NULL;
     cout << "Please enter the name or the ID of the second Pokemon you would like to compare:\n";
-    cin >> input;
+    getline(cin, input);
     inpute = input.c_str();
     if(isdigit(inpute[0]))
     {
@@ -518,7 +520,7 @@ void PokemonEntris::Compare()
     while (Actual2 == NULL)
     {
         cout << "Please enter a valid Pokemon name!\n";
-        cin >> input;
+        getline(cin, input);
         for (int i =0; i<151; i++)
         {
             if(pokedex[i].Name == input)
@@ -660,7 +662,7 @@ void PokemonEntris::Compare()
         cout << Actual2 -> Name << " has " << Actual2 -> BaseTotal << " base power." << endl;
         cout << Actual -> Name << " has the same amount of base power as " << Actual2 -> Name << "." << endl;
     }
-    cin.get();
+    //cin.get();
     while (cin.get() != '\n')
     {
     }
@@ -668,6 +670,7 @@ void PokemonEntris::Compare()
 
 void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
 {
+    //This is the general info menu. You can access general info about the Pokemon here.
     int leng = 26-trainerName.length();
     int menuStatus;
     string menu;
@@ -707,6 +710,7 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
 
 void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
 {
+    //This is the battle info menu. You can access battle info about the Pokemon here.
     int leng = 26-trainerName.length();
     int menuStatus;
     string menu;
@@ -759,6 +763,7 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
 
 void PokemonEntris :: SearchHP()
 {
+    //searches for the base HP of a certain Pokemon.
     system("clear");
     string LorH;
     string Type;
@@ -979,6 +984,7 @@ void PokemonEntris :: SearchHP()
 
 void PokemonEntris :: SearchATK()
 {
+    //searches for the base attack of a certain Pokemon.
     system("clear");
     string LorH;
     string Type;
@@ -1199,6 +1205,7 @@ void PokemonEntris :: SearchATK()
 
 void PokemonEntris :: SearchDEF()
 {
+    //searches for the base defense of a certain Pokemon.
     system("clear");
     string LorH;
     string Type;
@@ -1419,6 +1426,7 @@ void PokemonEntris :: SearchDEF()
 
 void PokemonEntris :: SearchSpA()
 {
+    //searches for the base special attack of a certain Pokemon.
     system("clear");
     string LorH;
     string Type;
@@ -1639,6 +1647,7 @@ void PokemonEntris :: SearchSpA()
 
 void PokemonEntris :: SearchSpD()
 {
+    //searches for the base special defense of a certain Pokemon.
     system("clear");
     string LorH;
     string Type;
@@ -1859,6 +1868,7 @@ void PokemonEntris :: SearchSpD()
 
 void PokemonEntris :: SearchSPD()
 {
+    //searches for the base speed of a certain Pokemon.
     system("clear");
     string LorH;
     string Type;
@@ -2079,17 +2089,19 @@ void PokemonEntris :: SearchSPD()
 
 void PokemonEntris::Breedable()
 {
+    //Checks whether two Pokemon can breed based off of their egg group.
     const char *inpute;
     string input;
     int inputN;
     PokemonInfo *Actual = NULL;
+    system("clear");
     cout << "Please enter the name or the ID of the first Pokemon you would like to verify for breed-ability:\n";
-    cin >> input;
+    getline(cin, input);
     inpute = input.c_str();
     if(isdigit(inpute[0]))
     {
         inputN = atoi(inpute) - 1;
-        while ( inputN > 150)
+        while ( inputN > 150 || inputN < 1)
         {
             cout << "Please enter a valid Pokemon ID!\n";
             cin >> inputN;
@@ -2111,7 +2123,7 @@ void PokemonEntris::Breedable()
     while (Actual == NULL)
     {
         cout << "Please enter a valid Pokemon name!\n";
-        cin >> input;
+        getline(cin, input);
         for (int i =0; i<151; i++)
         {
             if(pokedex[i].Name == input)
@@ -2123,7 +2135,7 @@ void PokemonEntris::Breedable()
     }
     PokemonInfo *Actual2 = NULL;
     cout << "Please enter the name or the ID of the second Pokemon you would like to verify for breed-ability:\n";
-    cin >> input;
+    getline(cin, input);
     inpute = input.c_str();
     if(isdigit(inpute[0]))
     {
@@ -2150,7 +2162,7 @@ void PokemonEntris::Breedable()
     while (Actual2 == NULL)
     {
         cout << "Please enter a valid Pokemon name!\n";
-        cin >> input;
+        getline(cin, input);
         for (int i =0; i<151; i++)
         {
             if(pokedex[i].Name == input)
@@ -2161,14 +2173,42 @@ void PokemonEntris::Breedable()
         }
     }
     system("clear");
-    if(Actual -> eggGroup1 == Actual2 -> eggGroup1 || Actual -> eggGroup1 == Actual2 -> eggGroup2 ||
-            Actual -> eggGroup2 == Actual2 -> eggGroup1 || Actual -> eggGroup2 == Actual2 -> eggGroup2)
+    if (Actual -> Name == "Nidorina" || Actual -> Name == "Nidoqueen" ||
+        Actual2 -> Name == "Nidorina" || Actual2 -> Name == "Nidoqueen")
+    {
+        if (Actual -> Name == "Nidoran M" || Actual2 -> Name == "Nidoran M" ||
+            Actual -> Name == "Nidorino" || Actual2 -> Name == "Nidorino" ||
+            Actual -> Name == "Nidoking" || Actual2 -> Name == "Nidoking" ||
+            Actual -> Name == "Ditto" || Actual2 -> Name == "Ditto")
+        {
+            cout << Actual -> Name << " can breed with " << Actual2 -> Name << "." << endl;
+        }
+        else
+        {
+            cout << Actual -> Name << " cannot breed with " << Actual2 -> Name << "." << endl;
+        }
+    }
+    else if (Actual -> eggGroup1 == " Undiscovered" || Actual -> eggGroup2 == " Undiscovered" ||
+        Actual2 -> eggGroup1 == " Undiscovered" || Actual2 -> eggGroup2 == " Undiscovered")
+    {
+        cout << Actual -> Name << " cannot breed with " << Actual2 -> Name << "." << endl;
+    }
+    else if (Actual -> eggGroup1 == " Ditto" || Actual -> eggGroup2 == " Ditto" ||
+        Actual2 -> eggGroup1 == " Ditto" || Actual2 -> eggGroup2 == " Ditto")
     {
         cout << Actual -> Name << " can breed with " << Actual2 -> Name << "." << endl;
     }
     else
-        cout << Actual -> Name << " cannot breed with " << Actual2 -> Name << "." << endl;
-    cin.get();
+    {
+        if(Actual -> eggGroup1 == Actual2 -> eggGroup1 || Actual -> eggGroup1 == Actual2 -> eggGroup2 ||
+                Actual -> eggGroup2 == Actual2 -> eggGroup1 || Actual -> eggGroup2 == Actual2 -> eggGroup2)
+        {
+            cout << Actual -> Name << " can breed with " << Actual2 -> Name << "." << endl;
+        }
+        else
+            cout << Actual -> Name << " cannot breed with " << Actual2 -> Name << "." << endl;
+    }
+    //cin.get();
     while (cin.get() != '\n')
     {
     }
@@ -2176,6 +2216,7 @@ void PokemonEntris::Breedable()
 
 void PokemonEntris :: SearchByHeight()
 {
+    //Searches for the tallest or shortest Pokemon based on their type.
     system("clear");
     string LorH;
     string Type;
@@ -2386,6 +2427,7 @@ void PokemonEntris :: SearchByHeight()
 
 void PokemonEntris :: SearchByWeight()
 {
+    //Searches for the heaviest or lightest Pokemon based on their type.
     system("clear");
     string LorH;
     string Type;
@@ -2588,7 +2630,7 @@ void PokemonEntris :: SearchByWeight()
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
     }
-    cin.get();
+    //cin.get();
     while (cin.get() != '\n')
     {
     }
@@ -2597,13 +2639,14 @@ void PokemonEntris :: SearchByWeight()
 
 void PokemonEntris::SearchByNNGeneral()
 {
+    //Allows you to find general info about a certain Pokemon by entering their name or ID number.
     system("clear");
     const char *inpute;
     string input;
     int inputN;
     PokemonInfo *Actual = NULL;
     cout << "Please enter the name or the ID of the Pokemon you would like to search for:\n";
-    cin >> input;
+    getline(cin, input);
     inpute = input.c_str();
     if(isdigit(inpute[0]))
     {
@@ -2630,7 +2673,7 @@ void PokemonEntris::SearchByNNGeneral()
     while (Actual == NULL)
     {
         cout << "Please enter a valid Pokemon name!\n";
-        cin >> input;
+        getline(cin, input);
         for (int i =0; i<151; i++)
         {
             if(pokedex[i].Name == input)
@@ -2669,7 +2712,7 @@ void PokemonEntris::SearchByNNGeneral()
 
     cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
     cout << Actual->DescriptionText << endl;
-    cin.get();
+    //cin.get();
     while (cin.get() != '\n')
     {
     }
@@ -2677,13 +2720,14 @@ void PokemonEntris::SearchByNNGeneral()
 
 void PokemonEntris ::SearchByNNBattle()
 {
+    //Allows you to find battle info about a certain Pokemon by entering their name or ID number.
     system("clear");
     const char *inpute;
     string input;
     int inputN;
     PokemonInfo *Actual = NULL;
     cout << "Please enter the name or the ID of the Pokemon you would like to search for:\n";
-    cin >> input;
+    getline(cin, input);
     inpute = input.c_str();
     if(isdigit(inpute[0]))
     {
@@ -2710,7 +2754,7 @@ void PokemonEntris ::SearchByNNBattle()
     while (Actual == NULL)
     {
         cout << "Please enter a valid Pokemon name!\n";
-        cin >> input;
+        getline(cin, input);
         for (int i =0; i<151; i++)
         {
             if(pokedex[i].Name == input)
@@ -2754,7 +2798,7 @@ void PokemonEntris ::SearchByNNBattle()
         cout << " ";
     cout << "    SPD: " << Actual->BaseSpeed << endl;
 
-    cin.get();
+    //cin.get();
     while (cin.get() != '\n')
     {
     }
