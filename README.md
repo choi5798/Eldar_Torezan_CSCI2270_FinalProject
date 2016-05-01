@@ -12,4 +12,4 @@ Project Members: Tulio Torezan and Tom Eldar
 
 No contributors currently.
 
-Current bugs: No known bugs.
+Current bugs: Cannot enter a name of a Pokemon after entering an ID and vice-versa when doing a search or checking for breedability. We are currently working on a fix for this issue. 
