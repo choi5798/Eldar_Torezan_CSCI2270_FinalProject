@@ -48,6 +48,7 @@ int main()
     string menu;
     int leng;
     PokemonEntris Pokedex;
+    bool flag1 = false;
     FactsList(&pokefacts[0]);
     Pokedex.createPokedex("PokedexEntris.txt");
     cout << "Trainer, Please enter your name:\n";
@@ -55,6 +56,11 @@ int main()
     leng = 26-trainerName.length();
     do {
         system("clear");
+        if (flag1 == false){
+            cout << "Press enter if you are stuck and unsure of how to continue!" << endl;
+            flag1 = true;
+        }
+
         cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
         for (int i = 0; i< leng-1;i++)
             cout << " ";

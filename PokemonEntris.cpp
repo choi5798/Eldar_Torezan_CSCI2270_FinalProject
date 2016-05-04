@@ -2630,7 +2630,7 @@ void PokemonEntris :: SearchByWeight()
         cout << " Gender: " << Actual->malePercent << "% Male    and    " << Actual->femalePercent << "% Female\n";
         cout << Actual->DescriptionText << endl;
     }
-    //cin.get();
+    cin.get();
     while (cin.get() != '\n')
     {
     }
