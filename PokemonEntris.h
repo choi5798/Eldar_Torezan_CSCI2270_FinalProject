@@ -54,22 +54,22 @@ public:
     void SearchByWeight();
     void SearchByNNGeneral();
     void SearchByNNBattle();
-    PokemonInfo *Grass;
-    PokemonInfo *Fire;
-    PokemonInfo *Water;
-    PokemonInfo *Dragon;
-    PokemonInfo *Rock;
-    PokemonInfo *Ground;
-    PokemonInfo *Electric;
-    PokemonInfo *Poison;
-    PokemonInfo *Ice;
-    PokemonInfo *Normal;
-    PokemonInfo *Flying;
-    PokemonInfo *Bug;
-    PokemonInfo *Psychic;
-    PokemonInfo *Fighting;
-    PokemonInfo *Ghost;
-    PokemonInfo pokedex[151];
+    PokemonInfo *Grass; //풀
+    PokemonInfo *Fire; //불
+    PokemonInfo *Water; //물
+    PokemonInfo *Dragon; //드래곤
+    PokemonInfo *Rock; //바위
+    PokemonInfo *Ground; //땅
+    PokemonInfo *Electric; //전기
+    PokemonInfo *Poison; //독
+    PokemonInfo *Ice; //얼음
+    PokemonInfo *Normal; //노말
+    PokemonInfo *Flying; //비행
+    PokemonInfo *Bug; //벌레
+    PokemonInfo *Psychic; //에스퍼
+    PokemonInfo *Fighting; //격투
+    PokemonInfo *Ghost; //고스트
+    PokemonInfo pokedex[151]; //현재 도감에 151마리 존재
 
 protected:
 private:

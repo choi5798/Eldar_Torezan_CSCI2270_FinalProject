@@ -375,11 +375,11 @@ void PokemonEntris :: createPokedex(string txtName)
             }
             getline (InFile,pokedex[i].species,',');
             getline (InFile,Aux,',');
-            pokedex[i].height = atoi(Aux.c_str());
+            pokedex[i].height = (float)atoi(Aux.c_str());
             pokedex[i].height = pokedex[i].height/100;
 
             getline (InFile,Aux,',');
-            pokedex[i].weight = atoi(Aux.c_str());
+            pokedex[i].weight = (float)atoi(Aux.c_str());
             pokedex[i].weight = pokedex[i].weight/1000;
 
             getline (InFile,pokedex[i].GrowthRate,',');
@@ -410,11 +410,11 @@ void PokemonEntris :: createPokedex(string txtName)
             getline (InFile,pokedex[i].eggGroup2,',');
 
             getline (InFile,Aux,',');
-            pokedex[i].malePercent = atoi(Aux.c_str());
-            pokedex[i].malePercent = pokedex[i].malePercent/100;
+            pokedex[i].malePercent = (float)atoi(Aux.c_str());
+            pokedex[i].malePercent = (float)pokedex[i].malePercent/100;
 
             getline (InFile,Aux,',');
-            pokedex[i].femalePercent = atoi(Aux.c_str());
+            pokedex[i].femalePercent = (float)atoi(Aux.c_str());
             pokedex[i].femalePercent = pokedex[i].femalePercent/100;
 
             getline (InFile,pokedex[i].DescriptionText);
@@ -448,7 +448,7 @@ void PokemonEntris :: createPokedex(string txtName)
 void PokemonEntris::Compare()
 {
     //Compares the battle stats of two Pokemon
-    system("clear");
+    system("cls");
     const char *inpute;
     string input;
     int inputN;
@@ -676,7 +676,7 @@ void PokemonEntris :: PokemonGeneralInformationMenu(string trainerName)
     string menu;
     do
     {
-        system("clear");
+        system("cls");
         cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
         for (int i = 0; i< leng-1; i++)
             cout << " ";
@@ -716,7 +716,7 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
     string menu;
     do
     {
-        system("clear");
+        system("cls");
         cout << "===============Pokedex===============" << endl << "- Kanto's Regional Pokedex          |" << endl << "- Trainer: " << trainerName;
         for (int i = 0; i< leng-1; i++)
             cout << " ";
@@ -763,8 +763,9 @@ void PokemonEntris :: PokemonBattleInformationMenu(string trainerName)
 
 void PokemonEntris :: SearchHP()
 {
+	
     //searches for the base HP of a certain Pokemon.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -781,7 +782,7 @@ void PokemonEntris :: SearchHP()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+    PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -888,7 +889,7 @@ void PokemonEntris :: SearchHP()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Lowest HP stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -941,7 +942,7 @@ void PokemonEntris :: SearchHP()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Highest Hp stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -985,7 +986,7 @@ void PokemonEntris :: SearchHP()
 void PokemonEntris :: SearchATK()
 {
     //searches for the base attack of a certain Pokemon.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -1002,7 +1003,7 @@ void PokemonEntris :: SearchATK()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+    PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -1109,7 +1110,7 @@ void PokemonEntris :: SearchATK()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Lowest ATK stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1162,7 +1163,7 @@ void PokemonEntris :: SearchATK()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Highest ATK stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1206,7 +1207,7 @@ void PokemonEntris :: SearchATK()
 void PokemonEntris :: SearchDEF()
 {
     //searches for the base defense of a certain Pokemon.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -1223,7 +1224,7 @@ void PokemonEntris :: SearchDEF()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+    PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -1330,7 +1331,7 @@ void PokemonEntris :: SearchDEF()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Lowest DEF stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1383,7 +1384,7 @@ void PokemonEntris :: SearchDEF()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Highest DEF stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1427,7 +1428,7 @@ void PokemonEntris :: SearchDEF()
 void PokemonEntris :: SearchSpA()
 {
     //searches for the base special attack of a certain Pokemon.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -1444,7 +1445,7 @@ void PokemonEntris :: SearchSpA()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+    PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -1551,7 +1552,7 @@ void PokemonEntris :: SearchSpA()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Lowest SpA stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1604,7 +1605,7 @@ void PokemonEntris :: SearchSpA()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Highest SpA stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1648,7 +1649,7 @@ void PokemonEntris :: SearchSpA()
 void PokemonEntris :: SearchSpD()
 {
     //searches for the base special defense of a certain Pokemon.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -1665,7 +1666,7 @@ void PokemonEntris :: SearchSpD()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+	PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -1772,7 +1773,7 @@ void PokemonEntris :: SearchSpD()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Lowest SpD stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1825,7 +1826,7 @@ void PokemonEntris :: SearchSpD()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Highest SpD stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -1869,7 +1870,7 @@ void PokemonEntris :: SearchSpD()
 void PokemonEntris :: SearchSPD()
 {
     //searches for the base speed of a certain Pokemon.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -1886,7 +1887,7 @@ void PokemonEntris :: SearchSPD()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+	PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -1993,7 +1994,7 @@ void PokemonEntris :: SearchSPD()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Lowest SPD stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -2046,7 +2047,7 @@ void PokemonEntris :: SearchSPD()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The " << Type << " type Pokemon with the Highest SPD stat is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -2094,7 +2095,7 @@ void PokemonEntris::Breedable()
     string input;
     int inputN;
     PokemonInfo *Actual = NULL;
-    system("clear");
+    system("cls");
     cout << "Please enter the name or the ID of the first Pokemon you would like to verify for breed-ability:\n";
     getline(cin, input);
     inpute = input.c_str();
@@ -2172,7 +2173,7 @@ void PokemonEntris::Breedable()
             }
         }
     }
-    system("clear");
+    system("cls");
     if (Actual -> Name == "Nidorina" || Actual -> Name == "Nidoqueen" ||
         Actual2 -> Name == "Nidorina" || Actual2 -> Name == "Nidoqueen")
     {
@@ -2217,7 +2218,7 @@ void PokemonEntris::Breedable()
 void PokemonEntris :: SearchByHeight()
 {
     //Searches for the tallest or shortest Pokemon based on their type.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -2234,7 +2235,7 @@ void PokemonEntris :: SearchByHeight()
         else
             heightStatus = true;
     }
-    PokemonInfo *temp;
+	PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -2341,7 +2342,7 @@ void PokemonEntris :: SearchByHeight()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The Shortest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -2389,7 +2390,7 @@ void PokemonEntris :: SearchByHeight()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The Tallest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -2428,7 +2429,7 @@ void PokemonEntris :: SearchByHeight()
 void PokemonEntris :: SearchByWeight()
 {
     //Searches for the heaviest or lightest Pokemon based on their type.
-    system("clear");
+    system("cls");
     string LorH;
     string Type;
     PokemonInfo *Actual;
@@ -2445,7 +2446,7 @@ void PokemonEntris :: SearchByWeight()
         else
             weightStatus = true;
     }
-    PokemonInfo *temp;
+	PokemonInfo *temp = new PokemonInfo;
     while (typeStatus != true)
     {
         cout << "What Pokemon type would you like to search by? (i.e. Fire, Grass, etc.)\n";
@@ -2552,7 +2553,7 @@ void PokemonEntris :: SearchByWeight()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The Lightest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -2600,7 +2601,7 @@ void PokemonEntris :: SearchByWeight()
                 temp = temp->next2;
             }
         }
-        system("clear");
+        system("cls");
         cout << " The Heaviest" << Type << " type Pokemon is:\n";
         cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
         cout << " No: ";
@@ -2640,7 +2641,7 @@ void PokemonEntris :: SearchByWeight()
 void PokemonEntris::SearchByNNGeneral()
 {
     //Allows you to find general info about a certain Pokemon by entering their name or ID number.
-    system("clear");
+    system("cls");
     const char *inpute;
     string input;
     int inputN;
@@ -2684,7 +2685,7 @@ void PokemonEntris::SearchByNNGeneral()
         }
     }
 
-    system("clear");
+    system("cls");
     cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
     cout << " No: ";
     if (Actual->PokedexNumber < 10)
@@ -2721,7 +2722,7 @@ void PokemonEntris::SearchByNNGeneral()
 void PokemonEntris ::SearchByNNBattle()
 {
     //Allows you to find battle info about a certain Pokemon by entering their name or ID number.
-    system("clear");
+    system("cls");
     const char *inpute;
     string input;
     int inputN;
@@ -2764,7 +2765,7 @@ void PokemonEntris ::SearchByNNBattle()
             }
         }
     }
-    system("clear");
+    system("cls");
     cout << " Name: " << Actual->Name << "    Species: " << Actual->species << endl;
     cout << " No: ";
     if (Actual->PokedexNumber < 10)

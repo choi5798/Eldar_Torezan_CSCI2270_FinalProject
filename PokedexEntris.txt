@@ -1,4 +1,4 @@
-Bulbasaur, 1, Grass, Poison, Seed Pokemon, 71, 6900, Medium Slow, 45, 49, 49, 65, 65, 45, 318, Grass, Monster, 8750, 1250, A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.
+﻿Bulbasaur, 1, Grass, Poison, Seed Pokemon, 71, 6900, Medium Slow, 45, 49, 49, 65, 65, 45, 318, Grass, Monster, 8750, 1250, A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.
 Ivysaur, 2, Grass, Poison, Seed Pokemon, 99, 13000, Medium Slow, 60, 62, 63, 80, 80, 60, 405, Grass, Monster, 8750, 1250, When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.
 Venusaur, 3, Grass, Poison, Seed Pokemon, 201, 100000, Medium Slow, 80, 82, 83, 100, 100, 80, 525, Grass, Monster, 8750, 1250, The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.
 Charmander, 4, Fire, Fire, Lizard Pokemon, 61, 8500, Medium Slow, 39, 52, 43, 60, 50, 65, 309, Dragon, Monster, 8750, 1250, Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.

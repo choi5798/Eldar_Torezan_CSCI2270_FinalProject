@@ -5,16 +5,18 @@
 #include <algorithm>
 #include <stdlib.h>
 #include <ctype.h>
+#include <ctime>
+
 #include "PokemonEntris.h"
 
 using namespace std;
 
 void RandomFacts(string *factslist)
 {
-    system("clear");
+    system("cls");
     int Rnumber;
-    system("clear");
-    srand( time( NULL ) );
+    system("cls");
+    srand((unsigned int)time( NULL ) );
     for (int i = 0; i < 3; i++)
     {
       Rnumber = (rand() % 40);
@@ -55,7 +57,7 @@ int main()
     getline(cin, trainerName);
     leng = 26-trainerName.length();
     do {
-        system("clear");
+        system("cls");
         if (flag1 == false){
             cout << "Press enter if you are stuck and unsure of how to continue!" << endl;
             flag1 = true;
@@ -82,7 +84,7 @@ int main()
                 RandomFacts(&pokefacts[0]);
                 break;
             case 4:
-                system("clear");
+                system("cls");
                 cout << "Good Luck Adventurer!\nGotta catch 'em all!!" << endl;
                 break;
         }
